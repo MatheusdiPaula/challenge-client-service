@@ -7,9 +7,8 @@ Docker
 
 Banco de Dados: Para subir o banco de dados optei por criar ele em um container, com isso precisamos de rodar os comandos abaixo para buscar a imagem do mysql e expor o container
 
- docker pull mysql
- 
- docker run --name mysql-database -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=user_database -e MYSQL_USER=springuser -e  MYSQL_PASSWORD=ThePassword -d mysql:8
+    docker pull mysql
+    docker run --name mysql-database -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=user_database -e MYSQL_USER=springuser -e  MYSQL_PASSWORD=ThePassword -d mysql:8
 
 ### Como construir a aplicacao
 
