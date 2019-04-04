@@ -53,7 +53,7 @@ public class UserService {
 						() -> new RuntimeException("Usuário não encontrado")
 				);
 
-		BeanUtils.copyProperties(userEntity, userDto, "id");
+		BeanUtils.copyProperties(userDto, userEntity, "id");
 		userRepository.save(userEntity);
 	}
 

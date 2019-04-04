@@ -41,15 +41,15 @@ public class UserController {
 
 	@ApiOperation("Altera um cliente")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, produces = "application/json")
-	public ResponseEntity<?> updateUser(@RequestAttribute(value = "id") Integer id, @RequestBody UserDto userDto) {
+	public ResponseEntity<?> updateUser(@PathVariable(value = "id") Integer id, @RequestBody UserDto userDto) {
 		userService.updateUser(id, userDto);
 		return ResponseEntity.ok().build();
 	}
 
 	@ApiOperation("Remove um cliente por id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<?> deleteUser(@RequestAttribute(value = "id") Integer id) {
+	public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Integer id) {
 		userService.delete(id);
-		return null;
+		return ResponseEntity.ok().build();
 	}
 }
