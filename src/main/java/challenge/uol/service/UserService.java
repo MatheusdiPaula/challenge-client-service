@@ -3,6 +3,7 @@ package challenge.uol.service;
 import challenge.uol.model.db.User;
 import challenge.uol.model.db.Weather;
 import challenge.uol.model.dto.UserDto;
+import challenge.uol.model.dto.UserWeatherDto;
 import challenge.uol.model.dto.WeatherDto;
 import challenge.uol.respository.UserRepository;
 import org.springframework.beans.BeanUtils;
@@ -23,13 +24,13 @@ public class UserService {
 		this.geolocationService = geolocationService;
 	}
 
-	public UserDto getUserById(Integer id) {
+	public UserWeatherDto getUserById(Integer id) {
 		User userEntity = userRepository.findById(id)
 				.orElseThrow(
 						() -> new RuntimeException("Usuário não encontrado")
 				);
 
-		UserDto userDto = UserDto.builder().build();
+		UserWeatherDto userDto = new UserWeatherDto();
 		BeanUtils.copyProperties(userEntity, userDto);
 		this.setWeather(userEntity, userDto);
 		return userDto;
@@ -61,21 +62,21 @@ public class UserService {
 		userRepository.deleteById(id);
 	}
 
-	public List<UserDto> getAllUsers() {
+	public List<UserWeatherDto> getAllUsers() {
 		return userRepository.findAll()
 				.stream()
 				.map(this::convertEntityToDto)
 				.collect(Collectors.toList());
 	}
 
-	private UserDto convertEntityToDto(User userEntity) {
-		UserDto userDto = UserDto.builder().build();
+	private UserWeatherDto convertEntityToDto(User userEntity) {
+		UserWeatherDto userDto = new UserWeatherDto();
 		BeanUtils.copyProperties(userEntity, userDto);
 		this.setWeather(userEntity, userDto);
 		return userDto;
 	}
 
-	private void setWeather(User userEntity, UserDto userDto) {
+	private void setWeather(User userEntity, UserWeatherDto userDto) {
 		if (Objects.nonNull(userEntity.getWeather())) {
 			WeatherDto weatherDto = WeatherDto.builder().build();
 			BeanUtils.copyProperties(userEntity.getWeather(), weatherDto);

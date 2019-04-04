@@ -1,6 +1,7 @@
 package challenge.uol.controller;
 
 import challenge.uol.model.dto.UserDto;
+import challenge.uol.model.dto.UserWeatherDto;
 import challenge.uol.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +19,22 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@ApiOperation(value = "Lista todos os clientes salvos", response = UserDto[].class)
+	@ApiOperation(value = "Lista todos os clientes salvos", response = UserWeatherDto[].class)
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<List<UserDto>> getUsers() {
+	public ResponseEntity<List<UserWeatherDto>> getUsers() {
 		return ResponseEntity.ok(userService.getAllUsers());
 	}
 
-	@ApiOperation(value = "Consulta um cliente por id", response = UserDto.class)
+	@ApiOperation(value = "Consulta um cliente por id", response = UserWeatherDto.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<UserDto> getUser(@PathVariable("id") Integer id) {
+	public ResponseEntity<UserWeatherDto> getUser(@PathVariable("id") Integer id) {
 		return ResponseEntity.ok(userService.getUserById(id));
 	}
 
 	@ApiOperation(value = "Cria um cliente")
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public ResponseEntity<?> createUser(
-			@RequestHeader(value = "x-data-ip") String ip,
+			@RequestHeader(value = "x-api-ip") String ip,
 			@RequestBody UserDto userDto) {
 		userService.createUser(userDto, ip);
 		return ResponseEntity.ok().build();
