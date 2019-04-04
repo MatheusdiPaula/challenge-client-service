@@ -28,7 +28,9 @@ Para realizar os testes basta rodar o comando abaixo:
 
      mvn test
 
-E apos esses comandos e possivel acessar a documentacao da API Swagger pelo link abaixo
+
+### Como usar o serviço
+Com a aplicacao rodando podemos ver a documentacao da API Swagger pelo link abaixo, detalhando totalmente como utilizar os serviços
 
 --http://localhost:8080/swagger-ui.html
 
