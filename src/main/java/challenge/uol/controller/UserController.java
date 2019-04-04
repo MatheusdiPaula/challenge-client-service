@@ -1,7 +1,7 @@
 package challenge.uol.controller;
 
-import challenge.uol.service.UserService;
 import challenge.uol.model.dto.UserDto;
+import challenge.uol.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

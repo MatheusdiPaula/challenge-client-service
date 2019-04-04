@@ -1,10 +1,10 @@
 package challenge.uol.service;
 
 import challenge.uol.model.db.User;
-import challenge.uol.model.dto.WeatherDto;
-import challenge.uol.respository.UserRepository;
 import challenge.uol.model.db.Weather;
 import challenge.uol.model.dto.UserDto;
+import challenge.uol.model.dto.WeatherDto;
+import challenge.uol.respository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -76,7 +76,7 @@ public class UserService {
 	}
 
 	private void setWeather(User userEntity, UserDto userDto) {
-		if(Objects.nonNull(userEntity.getWeather())) {
+		if (Objects.nonNull(userEntity.getWeather())) {
 			WeatherDto weatherDto = WeatherDto.builder().build();
 			BeanUtils.copyProperties(userEntity.getWeather(), weatherDto);
 			userDto.setWeather(weatherDto);

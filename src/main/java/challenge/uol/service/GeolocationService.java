@@ -2,7 +2,6 @@ package challenge.uol.service;
 
 import challenge.uol.model.dto.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservices.template.model.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
