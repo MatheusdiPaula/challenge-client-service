@@ -2,30 +2,38 @@
 
 ### Requisitos
 Maven
+
 Docker
 
-Banco de Dados: Para subir o banco de dados optei por criar ele em um container, com isso precisamos de rodar os comandos abaixo
-para buscar a imagem do mysql e expor o container
+Banco de Dados: Para subir o banco de dados optei por criar ele em um container, com isso precisamos de rodar os comandos abaixo para buscar a imagem do mysql e expor o container
 
-docker pull mysql
-docker run --name mysql-database -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=user_database -e MYSQL_USER=springuser -e MYSQL_PASSWORD=ThePassword -d mysql:8
+ docker pull mysql
+ 
+ docker run --name mysql-database -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=user_database -e MYSQL_USER=springuser -e  MYSQL_PASSWORD=ThePassword -d mysql:8
 
 ### Como construir a aplicacao
-Abrir o diretorio do projeto e rodar os seguintes comandos, 
-para que possamos limpar o projeto, empacotar, criar uma imagem docker
-e por fim subir a aplicacao em um container na porta 8080.
 
-mvn clean package
-docker build -t user-service .
-docker run -p 8080:8080 --name user-service --link mysql-database:mysql -d user-service
+1) Fazer checkout do projeto.
+2) Fazer o build do projeto com o comando:
+        
+        mvn clean package
+3) Construir o imagem com o Dockerfile: 
+
+        docker build -t user-service .
+4) Subir a aplicação no container: 
+
+        docker run -p 8080:8080 --name user-service --link mysql-database:mysql -d user-service
+        
 
 Para realizar os testes basta rodar o comando abaixo:
-mvn test
+
+     mvn test
 
 E apos esses comandos e possivel acessar a documentacao da API Swagger pelo link abaixo
+
 --http://localhost:8080/swagger-ui.html
 
-###Ferramentas utilizadas
+### Ferramentas Utilizadas
 Neste projeto foi utilizado as seguintes ferramentas:
 
  * Docker: Foi implementado um DockerFile com o intuito de subir a aplicacao via container e simplificar o processo
@@ -34,7 +42,7 @@ Neste projeto foi utilizado as seguintes ferramentas:
  
 
 
-##Montar o ambiente de producao
+## Montar o Ambiente de Producao
 Segue abaixo os passos necessarios para colocar o servico em producao:
  * Configurar uma integraçao automatizada, criando um job no Jenkins para construir o serviço e gerar a imagem docker
  * Criar um cluster em alguma plataforma para o container do servico
