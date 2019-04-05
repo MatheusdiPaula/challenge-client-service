@@ -1,5 +1,6 @@
 package challenge.uol.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,17 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherLocationDto {
 
-	@JsonProperty("distance")
-	private Double distance;
-	@JsonProperty("title")
-	private String title;
-	@JsonProperty("location_type")
-	private String locationType;
 	@JsonProperty("woeid")
 	private Integer woeid;
-	@JsonProperty("latt_long")
-	private String latLong;
 
 }

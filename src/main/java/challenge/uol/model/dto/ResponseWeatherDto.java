@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 public class ResponseWeatherDto {
 
 	@JsonProperty("consolidated_weather")
-	private WeatherDto[] wheather;
+	private WeatherDto[] weather;
 
 }
