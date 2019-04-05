@@ -46,6 +46,7 @@ Neste projeto foi utilizado as seguintes ferramentas:
 ## Montar o Ambiente de Producao
 Segue abaixo os passos necessarios para colocar o servico em producao:
  * Configurar uma integraçao automatizada, criando um job no Jenkins para construir o serviço e gerar a imagem docker
+ * Criar um Load balancer para dividir a carga de requisicoes que o container vai receber
  * Criar um cluster em alguma plataforma para o container do servico
  * Configurar um API Gateway para expor o servico para a internet
  * Criar regras de AutoScaling para que o servico escale automaticamente caso o numero de requisicoes aumentem
