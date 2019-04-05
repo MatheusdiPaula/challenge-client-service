@@ -16,6 +16,4 @@ public interface UserService {
 	void delete(Integer id);
 
 	List<UserWeatherDto> getAllUsers();
-
-
 }
